@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="base.css?_s=1469701231682"/>
+    <link rel="stylesheet" href="main.css?_s=1469701231682"/>
+    <link rel="stylesheet" href="chosen.css"/>
+    <link rel="stylesheet" href="jquery.Jcrop.min.css"/>
+    <link rel="stylesheet" href="ol.css"/>
+    <link rel="stylesheet" href="rl-map.css"/>
+    <style>
+        .cityselect .tab{
+            display: inline-block;
+            width: auto;
+            margin: 0;
+            height: 28px;
+            line-height: 28px;
+            padding: 0 18px;
+            color: #ccc;
+        }
+        .cityselect .tab.selected, .cityselect .city-region:hover,.cityselect .tab.curhand:hover {
+            background-color: #f48400;
+            color: #fff;
+        }
+        .cityselect .prev, .cityselect .next{
+            width: 22px;
+            left: 10px;
+            top: 40px;
+            position: absolute;
+            height: 118px;
+            overflow: hidden;
+            background: url('http://192.168.1.73/member/static/img/prenext.png') no-repeat 0 0;
+            display: block;
+            text-indent: -9999px;
+            border: 1px solid #f48400;
+        }
+        .cityselect .next{
+            background-position: -23px 0;
+            left: auto;
+            right: 10px;
+        }
+        .cityselect .disabled{
+            cursor: text;
+            border: 1px solid #000;
+        }
+        .cityselect .prev.disabled{
+            background-position: -92px 0;
+        }
+        .cityselect .next.disabled{
+            background-position: -115px 0;
+        }
+        .cityselect .city-regions-box{
+            width: 238px;
+            margin: 8px 40px;
+            overflow: hidden;
+            position: absolute;
+            height: 118px;
+        }
+        .cityselect .city-region{
+            width: 64px;
+            height: 21px;
+            line-height: 21px;
+            float: left;
+            overflow: hidden;
+            margin: 7px 15px 0 0;
+            display: inline-block;
+            zoom: 1;
+            text-align: center;
+            color: #464646;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="fmfrom pr z100">
+        <div class="pr citySelectorBox" style="margin-left: 100px">
+            <input id="citySelectId" type="text" class="citySelector txtbox br" value=""
+                   readonly="" data-hide-name="loadingCountyCode" >
+        </div>
+        <div class="pr citySelectorBox" style="margin-left: 500px;">
+            <input id="citySelectId2" type="text" class="citySelector txtbox br2" value=""
+                   readonly="" name="loadingCountyCode" >
+        </div>
+
+        <div class="pr citySelectorBox" style="margin-left: 900px;">
+            <input id="citySelectId3" type="text" class="citySelector txtbox br3" value=""
+                   readonly="" name="loadingCountyCode" >
+        </div>
+        <input type="text" id="test">
+        <input type="radio" class="test" value="" checked name="a">
+        <input type="radio" class="test" value="" name="a">
+    </div>
+
+<script src="jquery.min.js" type="text/javascript"></script>
+<script src="citySelect.js" type="text/javascript"></script>
+<script src="fn.js" type="text/javascript"></script>
+</body>
+</html>
+
+
