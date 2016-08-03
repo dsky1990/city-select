@@ -10,14 +10,11 @@
     $.get("area.json", function(data){
       areaData = data;
       state = true;
-
     });
   }
-  console.log(areaData);
   $.fn.setInputValue = function (v) {
     var $this = this;
     $.get("area.json", function(data){
-      console.log(v);
       var provinceName = null;
       var cityName = null;
       var areaName = null;
@@ -31,7 +28,6 @@
               provinceName = data[i].name;
               cityName = data[i].citys[j].name;
               areaName = data[i].citys[j].county[k].name;
-              console.log($this);
               $($this).val(provinceName + ' - ' + cityName + ' - ' + areaName)
             }
           }
@@ -99,8 +95,6 @@
       },
       hideEvent: function () {
         $(document).off('click').on('click', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
           if(!$(e.target).hasClass('citySelector') && !$(e.target).parents('div').hasClass('cityBox') && !$(e.target).hasClass('cityBox')){
             $('.cityBox').addClass('hide');
           }
