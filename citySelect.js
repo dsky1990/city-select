@@ -121,8 +121,6 @@
         _this.$regionUl.find('.province-list').off('click').on('click', function (e) {
           e.preventDefault();
           e.stopPropagation();
-          _this.$regionUl.html('');
-          _this.cityStr = '';
           var $this = $(this);
           _this.provinceId = $this.data('province');
           _this.provinceText = $this.text();
@@ -135,6 +133,8 @@
         var cityLen = data[provinceId].citys.length;
         var cityPage = Math.ceil(cityLen / _this.pageSize);
         _this.setPageDefault(cityPage);
+        _this.$regionUl.html('');
+        _this.cityStr = '';
         for(var i=0; i< cityLen; i++){
           var $li = '<li class="city-region city-list" data-city="'+ i +'">'+ data[provinceId].citys[i].name +'</li>';
           _this.cityStr += $li;
@@ -150,8 +150,6 @@
         _this.$regionUl.find('.city-list').off('click').on('click', function (e) {
           e.preventDefault();
           e.stopPropagation();
-          _this.$regionUl.html('');
-          _this.areaStr = '';
           var $this = $(this);
           _this.cityId = $this.data('city');
           _this.cityText = $this.text();
@@ -165,6 +163,8 @@
         var areaLen = data[provinceId].citys[cityId].county.length;
         var areaPage = Math.ceil(areaLen / _this.pageSize);
         _this.setPageDefault(areaPage);
+        _this.$regionUl.html('');
+        _this.areaStr = '';
         for(var i=0; i< areaLen; i++){
           var $li = '<li class="city-region area-list" data-area="'+ i +'" data-id="'+ data[provinceId].citys[cityId].county[i].id +'">'+ data[provinceId].citys[cityId].county[i].name +'</li>';
           _this.areaStr += $li;
@@ -258,14 +258,21 @@
             switch ($index){
               case 0:
                 _this.$regionUl.html(_this.provinceStr);
+                var len = Math.ceil($(_this.provinceStr).length / _this.pageSize);
+                _this.setPageDefault(len);
                 _this.getCity(data, $ele);
+                _this.clickNext(len);
                 break;
               case 1:
                 _this.$regionUl.html(_this.cityStr);
+                var len = Math.ceil($(_this.cityStr).length / _this.pageSize);
+                _this.setPageDefault(len);
                 _this.getArea(data, $ele);
                 break;
               case 2:
                 _this.$regionUl.html(_this.areaStr);
+                var len = Math.ceil($(_this.areaStr).length / _this.pageSize);
+                _this.setPageDefault(len);
                 _this.setValue($ele);
                 break;
                 // default
