@@ -18,3 +18,5 @@
 ```js
 $('#test').setInputValue(120101); // 天津 - 天津 - 和平
 ```
+
+> 屏幕录制by[licecap](http://www.cockos.com/licecap/)
