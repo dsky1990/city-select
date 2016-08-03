@@ -1,7 +1,7 @@
 # city-select
 
 ## 省市区选择
-这是一个简单的时间选择插件，只需要在需要显示input上加上`citySelector`这个calss就行了
+这是一个简单的省市区选择插件，只需要在需要显示input上加上`citySelector`这个calss就行了
 
 ```html
 <input type="text" class="citySelector" value="" readonly="" name="citySelector" >
