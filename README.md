@@ -1,7 +1,7 @@
 # city-select
 
 ## 省市区选择
-这是一个简单的省市区选择插件，只需要在需要显示的input上加上`citySelector`这个calss就行了
+这是一个简单的省市区选择插件，只需要在需要显示的input上加上`citySelector`这个calss就行了，[demo](http://dsklab-dsklab.stor.sinaapp.com/city-select/city.html)
 
 ```html
 <input type="text" class="citySelector" value="" readonly="" name="citySelector" >
