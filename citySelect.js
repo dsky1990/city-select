@@ -66,6 +66,7 @@
         var eleLeft = $ele.offset().left; // 元素位移
         var eleTop = $ele.offset().top; // 元素位移
         var height = $ele.height();
+        var docWidth = $(document).width();
         eleTop = eleTop + height +2;
         $('.cityBox').addClass('hide');
         if(!_this.addState){
@@ -84,6 +85,10 @@
         }
         // 初始化元素
         var $nextEle = $('.cityBox');
+        var cityBoxWidth = $nextEle.width();
+        if(docWidth -eleLeft < cityBoxWidth){
+          eleLeft = docWidth - cityBoxWidth;
+        }
         _this.$prev = $nextEle.find('.city-regions .prev');
         _this.$next = $nextEle.find('.city-regions .next');
         _this.$regionUl = $nextEle.find('.city-regions-box');
