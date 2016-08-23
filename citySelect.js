@@ -59,16 +59,16 @@
       areaStr: '',
       provinceId: null,
       cityId: null,
+      addState: false,
       init: function (data, $ele) {
-        var $nextEle = $ele.next();
         var _this = this;
         _this.$regionUl = null;
-        /*var $par = $ele.parent('.pr');
-         var parLeft = $par.offset().left;  //  父位移
-         var eleOffset = $ele.offset().left; // 元素位移
-         var leftOffset = eleOffset - parLeft; // 相对位移*/
+        var eleLeft = $ele.offset().left; // 元素位移
+        var eleTop = $ele.offset().top; // 元素位移
+        var height = $ele.height();
+        eleTop = eleTop + height +2;
         $('.cityBox').addClass('hide');
-        if(!$nextEle.hasClass('cityBox')){
+        if(!_this.addState){
           var templ = '<div class="cityselect cityBox">'+
               '<ul class="city-tabs">'+
               '<li class="tab province-tab curhand selected">省份</li>'+
@@ -78,15 +78,19 @@
               '<i class="prev cursor_p disabled"><<</i>'+
               '<i class="next cursor_p disabled">>></i>'+
               '<ul class="city-regions-box"></ul></div><div>';
-          $ele.after(templ);
+          $('body').append(templ);
           $ele.data('inputAdd', false);
+          _this.addState = true;
         }
         // 初始化元素
-        $nextEle = $ele.next('.cityBox');
+        var $nextEle = $('.cityBox');
         _this.$prev = $nextEle.find('.city-regions .prev');
         _this.$next = $nextEle.find('.city-regions .next');
         _this.$regionUl = $nextEle.find('.city-regions-box');
-//        $nextEle.css('left', leftOffset);
+       $nextEle.css({
+         'left': eleLeft,
+         'top': eleTop
+       });
         $nextEle.find('.tab').first().addClass('curhand selected').siblings('.tab').removeClass('selected curhand');
         _this.hideEvent();
         $nextEle.removeClass('hide');
@@ -143,7 +147,7 @@
         _this.getArea(data, $ele);
         _this.$next.off('click');
         _this.clickNext(cityPage);
-        $ele.next('.cityBox').find('.city-tab').addClass('curhand selected').siblings('.tab').removeClass('selected');
+        $('.cityBox').find('.city-tab').addClass('curhand selected').siblings('.tab').removeClass('selected');
       },
       getArea: function (data, $ele) { // 获取区级数据
         var _this = this;
@@ -173,7 +177,7 @@
         _this.$next.off('click');
         _this.clickNext(areaPage);
         _this.setValue($ele);
-        $ele.next('.cityBox').find('.area-tab').addClass('curhand selected').siblings('.tab').removeClass('selected');
+        $('.cityBox').find('.area-tab').addClass('curhand selected').siblings('.tab').removeClass('selected');
       },
       setValue: function ($ele) { // 返回数据
         var _this = this;
@@ -186,7 +190,7 @@
           var result = _this.provinceText + linkStr + _this.cityText + linkStr + areaText;
           $ele.val(result);
           $ele.prev('input').val();
-          $ele.next().addClass('hide');
+          $('.cityBox').addClass('hide');
           var $input = '<input type="hidden" name="'+inputName+'" value="'+_this.areaId+'">';
           var inputAdd = $ele.data('inputAdd');
           if(!inputAdd){
@@ -248,7 +252,7 @@
       },
       clickTab: function (data, $ele) { // tab点击
         var _this = this;
-        $ele.next('.cityBox').find('.tab').off('click').on('click', function (e) {
+        $('.cityBox').find('.tab').off('click').on('click', function (e) {
           e.preventDefault();
           e.stopPropagation();
           var $this = $(this);
