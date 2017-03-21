@@ -67,7 +67,7 @@
         var eleTop = $ele.offset().top; // 元素位移
         var height = $ele.height();
         var width = $ele.outerWidth();
-        var docWidth = $(document).width();
+        var docWidth = $(window).width();
         eleTop = eleTop + height +2;
         $('.cityBox').addClass('hide');
         if(!_this.addState){
